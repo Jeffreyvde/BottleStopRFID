@@ -11,7 +11,8 @@ class RFID
 public:
     RFID();
     RFID(int rstPin, int ssPin);
-    bool checkID();
+    String getID();
+    bool isRFIDAvailable();
     int readBlock(int blockNumber, byte arrayAddress[]);
     void cancelRead();
     void reset();

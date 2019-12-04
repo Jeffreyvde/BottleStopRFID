@@ -1,5 +1,7 @@
 #include "RFID.h"
 #include <MFRC522.h>
+#include <Arduino.h>
+
 RFID::RFID()
 {
     testRequired = 10;
@@ -22,8 +24,8 @@ RFID::RFID(int rstPin, int ssPin)
     currentTest = 0;
 }
 
-//Check if their is a bottle with an ID
-bool RFID::checkID()
+///Check if a new RFID card is available
+bool RFID::isRFIDAvailable  ()
 {
     //Check if a card is present
     if (!mfrc522.PICC_IsNewCardPresent())
@@ -37,7 +39,12 @@ bool RFID::checkID()
     {
         return false;
     }
+    return true;
+}
 
+//Check if their is a bottle with an ID
+String RFID::getID()
+{
     String currentBottleID = "";
     //Places ID in bottleID
     for (int i = 0; i < 4; i++)
@@ -45,7 +52,7 @@ bool RFID::checkID()
         currentBottleID.concat(String(mfrc522.uid.uidByte[i], HEX));
     }
     lastBottleID = currentBottleID;
-    return true;
+    return currentBottleID;
 }
 
 //Convert a byte[] to String
