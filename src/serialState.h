@@ -15,6 +15,7 @@ private:
     void Scan();
     void Listen();
     void Cancel();
+    
     const String cancelRequest = "cancel";
 
     RFID* rfid;
