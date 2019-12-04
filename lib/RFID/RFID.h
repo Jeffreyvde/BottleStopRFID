@@ -12,7 +12,7 @@ public:
     RFID();
     RFID(int rstPin, int ssPin);
     String getID();
-    bool isRFIDAvailable();
+    int isRFIDAvailable();
     int readBlock(int blockNumber, byte arrayAddress[]);
     void cancelRead();
     void reset();

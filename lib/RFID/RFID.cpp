@@ -25,21 +25,22 @@ RFID::RFID(int rstPin, int ssPin)
 }
 
 ///Check if a new RFID card is available
-bool RFID::isRFIDAvailable  ()
+int RFID::isRFIDAvailable  ()
 {
     //Check if a card is present
     if (!mfrc522.PICC_IsNewCardPresent())
     {
-        return false;
+        return 0;
     }
-    currentTest = 0;
 
     //Read the card that is present
     if (!mfrc522.PICC_ReadCardSerial())
     {
-        return false;
+        return 1;
     }
-    return true;
+
+    reset();
+    return 2;
 }
 
 //Check if their is a bottle with an ID

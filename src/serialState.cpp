@@ -2,6 +2,7 @@
 
 SerialState::SerialState(RFID* rfid){
     this->rfid = rfid;
+    state = Scanning;
 }
 
 void SerialState::handle()
@@ -23,7 +24,7 @@ void SerialState::handle()
 //Scan for a bottle
 void SerialState::Scan()
 {
-    if(rfid->isRFIDAvailable())
+    if(rfid->isRFIDAvailable() == 2)
     {
         Serial.print(rfid->getID());
         state = Connected;
@@ -33,7 +34,7 @@ void SerialState::Scan()
 //Listen for a cancel event or if the bottle is no longer there
 void SerialState::Listen()
 {
-    if(!rfid->isRFIDAvailable()){
+    if(rfid->isRFIDAvailable() == 0){
         state = Canceling;
     }else if(Serial.available() > 0){
          String message = Serial.readStringUntil('\n');
