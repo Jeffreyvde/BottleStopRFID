@@ -6,9 +6,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "/home/jeffrey/Documents/BottleStop RFID/include",
-                "/home/jeffrey/Documents/BottleStop RFID/src",
-                "/home/jeffrey/Documents/BottleStop RFID/lib/RFID",
+                "/home/jeffrey/Documents/BottleStopRFID/include",
+                "/home/jeffrey/Documents/BottleStopRFID/src",
+                "/home/jeffrey/Documents/BottleStopRFID/lib/RFID",
                 "/home/jeffrey/.platformio/lib/MFRC522_ID63/src",
                 "/home/jeffrey/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "/home/jeffrey/.platformio/packages/framework-arduino-avr/cores/arduino",
@@ -23,9 +23,9 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/jeffrey/Documents/BottleStop RFID/include",
-                    "/home/jeffrey/Documents/BottleStop RFID/src",
-                    "/home/jeffrey/Documents/BottleStop RFID/lib/RFID",
+                    "/home/jeffrey/Documents/BottleStopRFID/include",
+                    "/home/jeffrey/Documents/BottleStopRFID/src",
+                    "/home/jeffrey/Documents/BottleStopRFID/lib/RFID",
                     "/home/jeffrey/.platformio/lib/MFRC522_ID63/src",
                     "/home/jeffrey/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "/home/jeffrey/.platformio/packages/framework-arduino-avr/cores/arduino",
