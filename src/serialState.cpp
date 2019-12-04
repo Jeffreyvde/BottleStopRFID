@@ -6,7 +6,7 @@ SerialState::SerialState(RFID rfid){
 
 void SerialState::handle()
 {
-    switch (static_cast<SerialStates>(state))
+    switch (state)
     {
         case Scanning:
             Scan();

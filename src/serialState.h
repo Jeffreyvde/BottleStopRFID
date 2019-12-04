@@ -1,13 +1,12 @@
 
 #include "state.h"
 #include "RFID.h"
+enum SerialStates { Scanning = 0, Connected = 1, CancelState = 2};
 
-class SerialState : public State
+class SerialState : public State<SerialStates>
 {
 public:
     SerialState(RFID rfid);
-
-    enum SerialStates { Scanning = 0, Connected = 1, CancelState = 2};
 
     //Handle the state
     void handle();

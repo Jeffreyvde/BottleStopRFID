@@ -1,11 +1,11 @@
+//Must be an enum
+template <typename T> 
 class State
 {
 protected:
-    int state;
+    T state;
 
 public:
-    State();
-    State(int state);
 
     //Handle the state
     virtual void handle();
