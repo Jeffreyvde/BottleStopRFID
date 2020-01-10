@@ -26,7 +26,7 @@ void SerialState::Scan()
 {
     if(rfid->isRFIDAvailable() == 2)
     {
-        Serial.print(rfid->getID());
+        SendData("ID" + split + rfid->getID());
         state = Connected;
     }
 }
@@ -37,15 +37,33 @@ void SerialState::Listen()
     if(rfid->isRFIDAvailable() == 0){
         state = Canceling;
     }else if(Serial.available() > 0){
-         String message = Serial.readStringUntil('\n');
-         if(message == cancelRequest)
-            state = Canceling;
+         String message = Serial.readStringUntil(end);
+         if(*message.begin() == start)
+         {
+            if(CompareSerial(message, cancelRequest))
+                state = Canceling;
+         }
     }
 }
 
 //Send cancel event
 void SerialState::Cancel()
 {
-    Serial.write("Cancel"); 
+    SendData(cancelRequest); 
     state = Scanning;
+}
+
+//Send datat on serial
+void SerialState::SendData(String message)
+{
+    Serial.print(start + message + end);
+}
+
+//Check if received serial data is the same as comparison
+bool SerialState::CompareSerial(String serial, String comparison)
+{
+    serial.remove(0);
+    serial.remove(serial.length());
+
+    return serial == comparison;
 }

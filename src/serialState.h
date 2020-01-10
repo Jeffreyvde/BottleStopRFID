@@ -15,11 +15,15 @@ private:
     void Scan();
     void Listen();
     void Cancel();
+
+    void SendData(String message);
+    bool CompareSerial(String serial, String comparison);
     
-    const String cancelRequest = "cancel";
+    const String cancelRequest = "Cancel";
 
     RFID* rfid;
 
+    const char start = '$', end = '=', split = ':';
 
 };
 
