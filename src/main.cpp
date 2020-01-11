@@ -5,12 +5,11 @@
 SerialState* stateMachine;
 
 
-const int rstPin = 5, ssPin = 10;
+const int rstPin = 9, ssPin = 10;
 
 void setup()
 {
   Serial.begin(9600);
-
   stateMachine = new SerialState(new RFID(rstPin, ssPin));
 }
 
