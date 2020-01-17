@@ -1,4 +1,5 @@
 #include "serialState.h"
+#include "Arduino.h"
 
 SerialState::SerialState(RFID* rfid){
     this->rfid = rfid;
@@ -26,7 +27,8 @@ void SerialState::Scan()
 {
     if(rfid->isRFIDAvailable() == 2)
     {
-        SendData("ID" + split + rfid->getID());
+        String data = "ID" + String(split) + rfid->getID();
+        SendData(data);
         state = Connected;
     }
 }
